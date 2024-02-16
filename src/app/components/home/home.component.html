@@ -1,0 +1,13 @@
+<main>
+  <h2>À faire pour ma {{title}}</h2>
+<form [formGroup]="taskForm" (ngSubmit)="addTask($event)">
+
+  <label for="taskName">Nom de la tache: </label><br>
+  <input id="taskName" type="text" formControlName="taskName" autofocus><br>
+
+  <label for="taskDate">A réaliser le: </label><br>
+  <input id="taskDate" type="date" formControlName="taskDate"><br>
+
+  <input type="submit" value="Créer">
+</form>
+</main>
