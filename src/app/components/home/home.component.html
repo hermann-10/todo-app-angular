@@ -13,8 +13,8 @@
 <h2>Liste des tâches ci-dessous</h2>
 <!-- {{ tasks | json}} -->
 @for (task of tasks; track task.id){
-  <div>
-    <p>Nom: {{ task.taskName }}</p>
+  <div class="task">
+    <h4>Nom: {{ task.taskName }}</h4>
     <p>Date: {{ task.taskDate | date}}</p>
     <p>État:
     @if (task.taskState) {
@@ -24,7 +24,6 @@
         <span>Pas commencé</span>
       }
     </p>
-    <p>_______________________</p>
   </div>
 
 } @empty {
