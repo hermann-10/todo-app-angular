@@ -14,7 +14,7 @@
 {{ tasks | json}}
 @for (task of tasks; track task.id){
   <div class="task">
-      <app-task [task]="task" (onTaskStatusChange)="updateTaskStatus($event[0], $event[1])"></app-task>
+      <app-task [task]="task" (onTaskStatusChange)="updateTaskStatus($event[0], $event[1])" (onTaskDelete)="deleteTask($event)"></app-task>
   </div>
 
 } @empty {

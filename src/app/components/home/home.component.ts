@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   title="todo list app";
+
   taskForm = new FormGroup({
     taskName: new FormControl(''),
     taskDate: new FormControl(''),
@@ -44,6 +45,12 @@ export class HomeComponent implements OnInit {
   updateTaskStatus(status:boolean, id: string) {
     console.log(`Parent bien recu ${status} et ${id}`);
     this.taskService.updateTaskStatus(status, id);
+    this.tasks = this.taskService.readTasks();
+  }
+
+  deleteTask(id: string){
+    console.log(`Task à supprimer: ${id}`);
+    this.taskService.deleteTask(id);
     this.tasks = this.taskService.readTasks();
   }
 }

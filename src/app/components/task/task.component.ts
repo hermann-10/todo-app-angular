@@ -15,6 +15,7 @@ import { EventEmitter } from '@angular/core';
     <p>
       <input type="checkbox" name="taskDone" [id]="task.id" (change)="handleTaskState($event)" [checked]="isDonSig()"/>
       <label [for]="task.id"> {{ isDonSig() ? 'fait' : 'À faire' }}</label>
+      &nbsp; <button (click)="handleDelete()">Supprimer</button>
     </p>
   `,
   styleUrl: './task.component.css'
@@ -26,6 +27,7 @@ export class TaskComponent implements OnChanges{
  }
  @Input({ required: true}) task!:Task;
  @Output() onTaskStatusChange: EventEmitter<any> = new EventEmitter();
+ @Output() onTaskDelete: EventEmitter<any> = new EventEmitter();
 
  isDonSig = signal<boolean>(false);
 
@@ -35,6 +37,11 @@ export class TaskComponent implements OnChanges{
   // const status = ((e.target as HTMLInputElement).checked);
   // this.isDonSig.set(status);
   this.onTaskStatusChange.emit([this.isDonSig(), this.task.id]);
+ }
+
+ handleDelete(){
+  console.log(`Delete task ${this.task.id}`);
+  this.onTaskDelete.emit(this.task.id);
  }
 }
 
