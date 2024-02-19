@@ -3,19 +3,22 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
 import { CommonModule } from '@angular/common';
+import { AboutComponent } from "../about/about.component";
+import { TaskComponent } from '../task/task.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    imports: [CommonModule, ReactiveFormsModule, AboutComponent, TaskComponent]
 })
 export class HomeComponent implements OnInit {
 
+
   ngOnInit():void {
     this.tasks = this.taskService.readTasks();
-    console.log({task: this.tasks})
+    console.log('TASK: ', {task: this.tasks})
   }
 
   title="todo list app";
@@ -28,6 +31,8 @@ export class HomeComponent implements OnInit {
 
   tasks: Task[] = [];
 
+
+
   addTask(event:Event):void {
     event.preventDefault(); //avoid the reload all the page when I send the form
     //console.log(this.taskForm.value);
@@ -37,4 +42,8 @@ export class HomeComponent implements OnInit {
     this.tasks = this.taskService.readTasks();
     this.taskForm.reset(); //Empty form after submission
   }
+
+  updateTaskStatus(status:boolean, id: string) {
+    console.log(`Parent bien recu ${status} et ${id}`);
+    }
 }

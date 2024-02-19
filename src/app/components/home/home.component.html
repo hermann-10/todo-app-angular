@@ -2,8 +2,8 @@
   <h1>À faire pour ma {{title}}</h1>
 <form [formGroup]="taskForm" (ngSubmit)="addTask($event)">
 
-  <label for="taskName">Nom de la tache: </label><br>
-  <input id="taskName" type="text" formControlName="taskName" autofocus><br>
+  <label for="taskName">Nom de la tâche: </label><br>
+  <input id="taskName" type="text" placeholder="Nouvelle tâche" formControlName="taskName" autofocus><br>
 
   <label for="taskDate">A réaliser le: </label><br>
   <input id="taskDate" type="date" formControlName="taskDate"><br>
@@ -14,16 +14,7 @@
 <!-- {{ tasks | json}} -->
 @for (task of tasks; track task.id){
   <div class="task">
-    <h4>Nom: {{ task.taskName }}</h4>
-    <p>À réaliser avant le : {{ task.taskDate | date: 'EEEE dd MMMM YYYY':'':'fr-FR'}}</p>
-    <p>État:
-    @if (task.taskState) {
-      <span>Terminé</span>
-      }
-      @else {
-        <span>Pas commencé</span>
-      }
-    </p>
+      <app-task [task]="task" (onTaskStatusChange)="updateTaskStatus($event[0], $event[1])"></app-task>
   </div>
 
 } @empty {
