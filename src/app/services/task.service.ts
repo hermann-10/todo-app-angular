@@ -7,10 +7,16 @@ import { Task } from '../interfaces/task';
 export class TaskService {
 
   tasksSig = signal<Task[]>([
-    {id:'0',
+  {
+      id:'0',
     taskName: 'fd',
     taskDate: new Date(),
     taskDone: true,
+  },
+  {id:'1',
+    taskName: 'fd',
+    taskDate: new Date(),
+    taskDone: false,
   }
   ]);//A signal is a wrapper around a value that can notify interested consumers when that value changes //more information -> https://angular.io/guide/signals
 

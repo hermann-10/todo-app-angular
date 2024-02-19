@@ -13,7 +13,7 @@ import { EventEmitter } from '@angular/core';
     <h4>Nom: {{ task.taskName }}</h4>
     <p>À réaliser avant le : {{ task.taskDate | date: 'EEEE dd MMMM YYYY':'':'fr-FR'}}</p>
     <p>
-      <input type="checkbox" name="taskDone" [id]="task.id" (change)="handleTaskState($event)"/>
+      <input type="checkbox" name="taskDone" [id]="task.id" (change)="handleTaskState($event)" [checked]="isDonSig()"/>
       <label [for]="task.id"> {{ isDonSig() ? 'fait' : 'À faire' }}</label>
     </p>
   `,
@@ -21,7 +21,8 @@ import { EventEmitter } from '@angular/core';
 })
 export class TaskComponent implements OnChanges{
  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    console.log(changes['task'].currentValue.taskDone);
+    this.isDonSig.set(changes['task'].currentValue.taskDone);
  }
  @Input({ required: true}) task!:Task;
  @Output() onTaskStatusChange: EventEmitter<any> = new EventEmitter();
