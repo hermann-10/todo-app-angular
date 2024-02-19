@@ -6,7 +6,13 @@ import { Task } from '../interfaces/task';
 })
 export class TaskService {
 
-  tasksSig = signal<Task[]>([]);//A signal is a wrapper around a value that can notify interested consumers when that value changes //more information -> https://angular.io/guide/signals
+  tasksSig = signal<Task[]>([
+    {id:'0',
+    taskName: 'fd',
+    taskDate: new Date(),
+    taskDone: true,
+  }
+  ]);//A signal is a wrapper around a value that can notify interested consumers when that value changes //more information -> https://angular.io/guide/signals
 
   createTask(taskName:string, taskDate: string): void{
     const newTask: Task = {

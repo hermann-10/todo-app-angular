@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, signal } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Task } from '../../interfaces/task';
 import { EventEmitter } from '@angular/core';
@@ -19,7 +19,10 @@ import { EventEmitter } from '@angular/core';
   `,
   styleUrl: './task.component.css'
 })
-export class TaskComponent {
+export class TaskComponent implements OnChanges{
+ ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+ }
  @Input({ required: true}) task!:Task;
  @Output() onTaskStatusChange: EventEmitter<any> = new EventEmitter();
 
