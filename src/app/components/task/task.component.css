@@ -1,0 +1,14 @@
+.task-footer{
+  display:flex;
+  justify-content: space-between;
+}
+
+label{
+  cursor: pointer;
+  user-select:none;
+}
+
+.del{
+  color:#fff;
+  background-color: red;
+}
