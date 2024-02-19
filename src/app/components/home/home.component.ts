@@ -1,17 +1,18 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from "../about/about.component";
 import { TaskComponent } from '../task/task.component';
+import { TasksHeaderComponent } from '../tasks-header/tasks-header.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [CommonModule, ReactiveFormsModule, AboutComponent, TaskComponent]
+    imports: [CommonModule, ReactiveFormsModule, AboutComponent, TaskComponent, TasksHeaderComponent]
 })
 export class HomeComponent implements OnInit {
 

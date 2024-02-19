@@ -10,6 +10,7 @@
 
   <input type="submit" value="Créer">
 </form>
+<app-tasks-header [tasks]="tasks"></app-tasks-header>
 <h2>Liste des tâches ci-dessous</h2>
 <!-- {{ tasks | json}} -->
 @for (task of tasks; track task.id){
