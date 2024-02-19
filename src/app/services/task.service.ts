@@ -22,4 +22,10 @@ export class TaskService {
   readTasks(): Task[]{
     return this.tasksSig();
   }
+
+  updateTaskStatus(status: boolean, id: string): void{
+    console.log(`Le service a reçu ${status} et ${id}`);
+    this.tasksSig.update(tasks => tasks.map(t => t.id !== id ? t : { ...t, taskDone: status})
+    );
+  }
 }

@@ -31,8 +31,6 @@ export class HomeComponent implements OnInit {
 
   tasks: Task[] = [];
 
-
-
   addTask(event:Event):void {
     event.preventDefault(); //avoid the reload all the page when I send the form
     //console.log(this.taskForm.value);
@@ -45,5 +43,7 @@ export class HomeComponent implements OnInit {
 
   updateTaskStatus(status:boolean, id: string) {
     console.log(`Parent bien recu ${status} et ${id}`);
-    }
+    this.taskService.updateTaskStatus(status, id);
+    this.tasks = this.taskService.readTasks();
+  }
 }

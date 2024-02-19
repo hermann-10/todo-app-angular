@@ -14,7 +14,7 @@ import { EventEmitter } from '@angular/core';
     <p>À réaliser avant le : {{ task.taskDate | date: 'EEEE dd MMMM YYYY':'':'fr-FR'}}</p>
     <p>
       <input type="checkbox" name="taskDone" [id]="task.id" (change)="handleTaskState($event)"/>
-      <label [for]="task.id"> {{ isDonSig() ? 'fait' : 'à faire' }}</label>
+      <label [for]="task.id"> {{ isDonSig() ? 'fait' : 'À faire' }}</label>
     </p>
   `,
   styleUrl: './task.component.css'
